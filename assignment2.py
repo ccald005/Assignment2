@@ -1,4 +1,5 @@
 import sys
+from socket import *
 from datetime import datetime
 
 @staticmethod
@@ -10,8 +11,17 @@ def checkGoodString(string):
     return True
 
 @staticmethod
-def connectTcp(host, type):
-    return None
+def connectTcp(host: str, port: int):
+    hostName = host
+    portNumber = port
+    sock = socket(AF_INET, SOCK_STREAM)
+    try:
+        sock.connect((hostName, portNumber))
+    except socket.error as e:
+        return False
+    else:
+        sock.close()
+        return True
 
 class Assignment2:
     def __init__(self, year) -> None:
@@ -37,12 +47,17 @@ class Assignment2:
         return "hello"
 
 
-a = Assignment2(1991)
-a.tellAge(datetime.now().year)
-rv = a.listAnneversaries()
-print(rv)
-rv = checkGoodString("f1obar0more")
-print(rv)
-rv = checkGoodString("foobar0more")
-print(rv)
+# a = Assignment2(1991)
+# a.tellAge(datetime.now().year)
+# rv = a.listAnneversaries()
+# print(rv)
+# rv = checkGoodString("f1obar0more")
+# print(rv)
+# rv = checkGoodString("foobar0more")
+# print(rv)
 
+rv = connectTcp("www.google.com", 80)
+if rv:
+    print("success")
+else:
+    print("fail")

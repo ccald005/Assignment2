@@ -12,11 +12,9 @@ def checkGoodString(string):
 
 @staticmethod
 def connectTcp(host: str, port: int):
-    hostName = host
-    portNumber = port
     sock = socket(AF_INET, SOCK_STREAM)
     try:
-        sock.connect((hostName, portNumber))
+        sock.connect((host, port))
     except socket.error as e:
         return False
     else:
@@ -24,7 +22,7 @@ def connectTcp(host: str, port: int):
         return True
 
 class Assignment2:
-    def __init__(self, year) -> None:
+    def __init__(self, year):
         self.year = year
 
     def tellAge(self, current_year):
@@ -43,18 +41,20 @@ class Assignment2:
         return list
     
     def modifyYear(self, n):
-        rv = self.year
-        return "hello"
+        return str(self.year)[:2]*n + str(self.year*n)[::2]
 
 
-# a = Assignment2(1991)
-# a.tellAge(datetime.now().year)
-# rv = a.listAnneversaries()
-# print(rv)
-# rv = checkGoodString("f1obar0more")
-# print(rv)
-# rv = checkGoodString("foobar0more")
-# print(rv)
+a = Assignment2(2000)
+a.tellAge(datetime.now().year)
+rv = a.listAnneversaries()
+print(rv)
+rv = checkGoodString("f1obar0more")
+print(rv)
+rv = checkGoodString("foobar0more")
+print(rv)
+
+rv = a.modifyYear(5)
+print(rv)
 
 rv = connectTcp("www.google.com", 80)
 if rv:

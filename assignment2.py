@@ -55,5 +55,4 @@ print(rv)
 
 x  = 22//10
 
-
 print("%d" % x)

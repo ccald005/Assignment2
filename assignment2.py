@@ -1,6 +1,5 @@
 import sys
 from socket import *
-from datetime import datetime
 
 @staticmethod
 def checkGoodString(string):
@@ -32,27 +31,3 @@ class Assignment2:
     
     def modifyYear(self, n):
         return str(self.year)[:2]*n + str(self.year*n)[::2]
-
-
-a = Assignment2(2000)
-a.tellAge((datetime.now().year)-2)
-rv = a.listAnneversaries()
-print(rv)
-
-rv = checkGoodString("f1obar0more")
-print(rv)
-rv = checkGoodString("foobar0more")
-print(rv)
-
-# rv = a.modifyYear(5)
-# print(rv)
-
-# rv = connectTcp("www.google.com", 80)
-# if rv:
-#     print("success")
-# else:
-#     print("fail")
-
-x  = 22//10
-
-print("%d" % x)
